@@ -80,7 +80,6 @@ h1 {
   padding: var(--game-spacing) 32px;
   margin: 0 auto;
   min-width: 250px;
-  max-width: min(500px, 58vh, 100%);
 }
 
 .guess-results {
@@ -200,27 +199,40 @@ h1 {
   border: 0;
 }
 
-/*
-  Modal styles
+.keyboard {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
 
-  HACK: I'm doing this in a quick and dirty way.
-  Later in the course, we'll see my preferred way of building
-  modals in React.
-*/
-[data-reach-dialog-content] {
-  position: relative;
-  border-radius: 8px;
-  padding: 24px 32px;
+.keyboard-row {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
 }
-.modal-close-btn {
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding: 16px;
-  cursor: pointer;
+
+.keyboard .letter {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 4px;
+  display: grid;
+  place-content: center;
+  background: var(--color-gray-900);
+  font-size: 1rem;
+  font-weight: 600;
 }
-.modal-title {
-  margin-bottom: 0.5em;
+
+.keyboard .letter.correct {
+  background: var(--color-success);
+  color: white;
+}
+.keyboard .letter.incorrect {
+  background: var(--color-gray-300);
+  color: white;
+}
+.keyboard .letter.misplaced {
+  background: var(--color-warning);
+  color: white;
 }
 
 /*
