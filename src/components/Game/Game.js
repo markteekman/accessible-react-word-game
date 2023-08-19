@@ -11,10 +11,8 @@ import WonBanner from '../WonBanner/WonBanner';
 import LostBanner from '../LostBanner/LostBanner';
 import VisualKeyboard from '../VisualKeyboard/VisualKeyboard';
 
-const answer = sample(WORDS);
-console.log({ answer });
-
 function Game() {
+  const [answer, setAnswer] = React.useState(() => sample(WORDS));
   const [gameStatus, setGameStatus] = React.useState('running');
   const [guesses, setGuesses] = React.useState([]);
 
@@ -29,20 +27,37 @@ function Game() {
     }
   }
 
+  function handleRestart() {
+    const newAnswer = sample(WORDS);
+    setAnswer(newAnswer);
+    setGuesses([]);
+    setGameStatus('running');
+  }
+
   const validatedGuesses = guesses.map((guess) => checkGuess(guess, answer));
 
   return (
     <>
       <GuessResults
-        guesses={guesses}
+        validatedGuesses={validatedGuesses}
         answer={answer}
       />
       <GuessInput
         handleSubmittedGuess={handleSubmittedGuess}
         gameStatus={gameStatus}
       />
-      {gameStatus === 'won' && <WonBanner numOfGuesses={guesses.length} />}
-      {gameStatus === 'lost' && <LostBanner answer={answer} />}
+      {gameStatus === 'won' && (
+        <WonBanner
+          numOfGuesses={guesses.length}
+          handleRestart={handleRestart}
+        />
+      )}
+      {gameStatus === 'lost' && (
+        <LostBanner
+          answer={answer}
+          handleRestart={handleRestart}
+        />
+      )}
       <VisualKeyboard validatedGuesses={validatedGuesses} />
     </>
   );
