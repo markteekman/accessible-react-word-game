@@ -22,15 +22,14 @@ function HelpModal() {
         </li>
         <li>
           Utilized semantic HTML structure, including landmarks such as{' '}
-          <code>header</code>, <code>main</code> and <code>footer</code>, along
-          with <code>ul</code> and <code>li</code> for guesses,{' '}
-          <code>button</code> for interactive elements, <code>label</code> for
-          input, and <code>dialog</code> for modals.
+          <code>header</code>, <code>main</code> and <code>footer</code>,{' '}
+          <code>button</code> for interactive elements, a <code>label</code> for
+          the input, and <code>dialog</code> for the modals.
         </li>
         <li>
-          Incorporated <code>aria-live</code> and <code>aria-atomic</code>{' '}
-          attributes on the game's guesses. After submitting a guess, screen
-          reader software will read out the results and letter statuses.
+          Incorporated <code>aria-live</code> attribute on the game's guesses.
+          After submitting a guess, screen reader software will read out the
+          results and letter statuses.
         </li>
         <li>
           Ensured proper announcement to screen readers when the game is won or
