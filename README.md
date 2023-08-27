@@ -1,5 +1,28 @@
 # Word Game
 
+## Final Outcome
+
+![Demo showing the finished product, our Wordle clone](docs/endresult.png)
+
+This is the result of my first project in the [Joy of React](https://www.joyofreact.com/) course. There's a live demo you can play with at https://accessible-react-word-game.netlify.app/. I followed the recommended approach: working on an exercise for about 15-45 minutes and then watching the solution video. Besides completing the two provided stretch goals I also added some of my own, including:
+
+- Incorporating animations for correct letters.
+- Implementing the `canvas-confetti` library for an extra enjoyable victory celebration.
+- Adding a toggle component for Dark Mode which utilizes the `useEffect` hook.
+- Creating both Modal and ModalTrigger components.
+- Enhancing project accessibility by:
+  - Introducing a second visual indicator for letters in the correct position (straight underline) and the wrong position (wavy underline) to assist visually impaired users.
+  - Enhancing custom focus outline indicators beyond the default browser styling.
+  - Utilizing semantic HTML structure, which includes landmarks like `<header>`, `<main>`, and `<footer>`. Additionally, using `<ul>` and `<li>` for guesses, `<button>` for interactive elements, `<label>` for inputs, and `<dialog>` for modals.
+  - Applying `aria-live` and `aria-atomic` attributes to the game's guesses. This enables screen reader software to audibly present the results and statuses of letters after submitting a guess.
+  - Ensuring appropriate notifications to screen readers when the game is either won or lost.
+  - Setting the tab focus just before the 'Restart Game' button after a game is won or lost using `useRef` and `useEffect`.
+  - Setting focus on the input field after the 'Restart Game' button is pressed.
+  - Implementing a dark mode that aligns with the user's system-wide `preferes-color-scheme` setting.
+  - Disabling confetti and correct letter animations for users who have enabled `prefers-reduced-motion` in their OS settings.
+
+Following this section are the exercise instructions:
+
 ## Joy of React, Project I
 
 In this project, we'll recreate a popular online word game, Wordle:
@@ -37,7 +60,10 @@ Here's a minimal representation of the markup expected to be produced by this ne
 ```html
 <form class="guess-input-wrapper">
   <label for="guess-input">Enter guess:</label>
-  <input id="guess-input" type="text" />
+  <input
+    id="guess-input"
+    type="text"
+  />
 </form>
 ```
 
@@ -225,10 +251,7 @@ The user wins the game when their guessed word is identical to the `answer`. The
 
 ```html
 <div class="happy banner">
-  <p>
-    <strong>Congratulations!</strong> Got it in
-    <strong>3 guesses</strong>.
-  </p>
+  <p><strong>Congratulations!</strong> Got it in <strong>3 guesses</strong>.</p>
 </div>
 ```
 

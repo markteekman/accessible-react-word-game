@@ -4,6 +4,8 @@
   "private": true,
   "author": "Josh Comeau <me@joshwcomeau.com>",
   "dependencies": {
+    "animate.css": "^4.1.1",
+    "canvas-confetti": "^1.6.0",
     "new-component": "4.0.0",
     "prettier": "^2.6.2",
     "react": "18.2.0",
