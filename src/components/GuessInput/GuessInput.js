@@ -1,7 +1,15 @@
 import React from 'react';
 
-function GuessInput({ gameStatus, handleSubmittedGuess }) {
+function GuessInput({ gameStatus, handleSubmittedGuess, restartOccurred }) {
   const [pedningGuess, setPendingGuess] = React.useState('');
+
+  const inputRef = React.useRef(null);
+
+  React.useEffect(() => {
+    if (restartOccurred && gameStatus === 'running') {
+      inputRef.current.focus();
+    }
+  }, [restartOccurred, gameStatus]);
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -16,6 +24,7 @@ function GuessInput({ gameStatus, handleSubmittedGuess }) {
     >
       <label htmlFor="guess-input">Enter guess:</label>
       <input
+        ref={inputRef}
         disabled={gameStatus !== 'running'}
         required
         maxLength={5}

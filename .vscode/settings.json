@@ -1,0 +1,7 @@
+{
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+  "spellright.language": ["nl", "en"],
+  "spellright.documentTypes": ["markdown", "latex", "plaintext"]
+}

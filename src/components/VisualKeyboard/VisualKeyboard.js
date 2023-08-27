@@ -10,8 +10,8 @@ function getStatusByLetter(validatedGuesses) {
   const statusObj = {};
 
   validatedGuesses.forEach((guess) => {
-    guess.forEach(({ letter, status }) => {
-      statusObj[letter] = status;
+    guess.forEach(({ letter, status, screenreader }) => {
+      statusObj[letter] = { status, screenreader };
     });
   });
 
@@ -23,18 +23,23 @@ function VisualKeyboard({ validatedGuesses }) {
 
   return (
     <div className="keyboard">
+      <h2>Hints</h2>
       {ROWS.map((row, index) => (
         <div
           className="keyboard-row"
           key={index}
         >
           {row.map((letter) => (
-            <div
+            <kbd
+              className={`letter ${statusByLetter[letter]?.status || ''}`}
               key={letter}
-              className={`letter ${statusByLetter[letter] || ''}`}
             >
-              {letter}
-            </div>
+              <span className="visually-hidden">{`${letter} ${
+                statusByLetter[letter]?.screenreader ||
+                'has not been used in the word'
+              }`}</span>
+              <span aria-hidden="true">{letter}</span>
+            </kbd>
           ))}
         </div>
       ))}

@@ -7,7 +7,10 @@ import Guess from '../Guess';
 
 function GuessResults({ validatedGuesses, answer }) {
   return (
-    <div className="guess-results">
+    <div
+      className="guess-results"
+      aria-live="polite"
+    >
       {range(NUM_OF_GUESSES_ALLOWED).map((num) => (
         <Guess
           key={num}

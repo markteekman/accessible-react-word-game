@@ -15,6 +15,7 @@ function Game() {
   const [answer, setAnswer] = React.useState(() => sample(WORDS));
   const [gameStatus, setGameStatus] = React.useState('running');
   const [guesses, setGuesses] = React.useState([]);
+  const [restartOccurred, setRestartOccurred] = React.useState(false);
 
   function handleSubmittedGuess(pendingGuess) {
     const nextGuesses = [...guesses, pendingGuess];
@@ -32,6 +33,7 @@ function Game() {
     setAnswer(newAnswer);
     setGuesses([]);
     setGameStatus('running');
+    setRestartOccurred(true);
   }
 
   const validatedGuesses = guesses.map((guess) => checkGuess(guess, answer));
@@ -45,6 +47,7 @@ function Game() {
       <GuessInput
         handleSubmittedGuess={handleSubmittedGuess}
         gameStatus={gameStatus}
+        restartOccurred={restartOccurred}
       />
       {gameStatus === 'won' && (
         <WonBanner

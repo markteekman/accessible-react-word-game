@@ -23,6 +23,7 @@ export function checkGuess(guess, answer) {
       result[i] = {
         letter: guessChars[i],
         status: 'correct',
+        screenreader: 'is in the right place',
       };
       answerChars[i] = SOLVED_CHAR;
       guessChars[i] = SOLVED_CHAR;
@@ -37,17 +38,20 @@ export function checkGuess(guess, answer) {
     }
 
     let status = 'incorrect';
+    let screenreader = 'is not in the word';
     const misplacedIndex = answerChars.findIndex(
       (char) => char === guessChars[i]
     );
     if (misplacedIndex >= 0) {
       status = 'misplaced';
+      screenreader = 'is in the word but not in the right place';
       answerChars[misplacedIndex] = SOLVED_CHAR;
     }
 
     result[i] = {
       letter: guessChars[i],
       status,
+      screenreader,
     };
   }
 
