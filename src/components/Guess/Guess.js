@@ -6,7 +6,7 @@ import { range } from '../../utils';
 
 function Cell({ letter, status, screenreader }) {
   const className = status ? `cell ${status}` : 'cell';
-  const animate = status === 'correct' ? 'animate__flipInY' : null;
+  const animate = status === 'correct' ? 'animate__flipInY' : '';
   const screenReader = screenreader ? screenreader : '';
 
   return (
