@@ -17,8 +17,6 @@ function Game() {
   const [guesses, setGuesses] = React.useState([]);
   const [restartOccurred, setRestartOccurred] = React.useState(false);
 
-  console.log({ answer });
-
   function handleSubmittedGuess(pendingGuess) {
     const nextGuesses = [...guesses, pendingGuess];
     setGuesses(nextGuesses);
